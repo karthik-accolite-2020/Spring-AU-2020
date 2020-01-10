@@ -1,0 +1,82 @@
+<html>
+<head>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style>
+.bar1{
+border-radius:20px;
+background-color:rgba(255,0,0,0.3);
+height:20px;
+width:200px;
+margin-top:25%;
+margin-left:40%;
+}
+
+.prog1{
+border-radius:20px;
+background-color:red;
+height:20px;
+width:0px;
+-webkit-animation-name: example;
+-webkit-animation-duration: 4s;
+}
+.bar2{
+border-radius:20px;
+background-color:rgba(255,0,0,0.3);
+height:20px;
+width:200px;
+margin-top:2%;
+margin-left:40%;
+}
+
+.prog2{
+border-radius:20px;
+background-color:red;
+height:20px;
+width:0px;
+}
+
+@keyframes example {
+  from {background-color: red;
+  width:0px;}
+  to {background-color: yellow;
+  width:200px;}
+}
+</style>
+</head>
+<body align="center">
+<div class="bar1">
+<div class="prog1">
+<p id="percent1"></p>
+</div>
+</div>
+<br/>
+<div class="bar2">
+<div class="prog2">
+<p id="percent2"></p>
+</div>
+</div>
+<br/>
+<button id="inc">Increase</button>
+<script>
+$(document).ready(function(){
+	$("#inc").click(function(){
+		var w=parseInt($(".prog2").css("width"))
+		if(w<200){
+			w=w+20;
+			$(".prog2").css("width",w).css("background-color","rgba("+2*w+","+w+","+w/2+",0.5)");
+			$("#percent2").text(w/2+"%")
+			
+		}
+	})
+})
+</script>
+</body>
+</html>
