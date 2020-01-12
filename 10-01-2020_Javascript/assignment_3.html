@@ -1,0 +1,83 @@
+<html>
+<head>
+
+<style>
+
+</style>
+
+</head>
+<body>
+<div align="center">
+<input type="text" placeholder="Username" id="username"/><br>
+
+<br>
+<input type="password" placeholder="Password" id="password"/><br><br>
+<input type="password" placeholder="Confirm Password" id="conf"/><br><br>
+
+<label id="msg">
+Username, passwords should be atleast 8 character long<br>
+Atleast one uppercase letter required<br>
+Atleast one lowercase letter required<br>
+Atleast one of $@* is required<br>
+Word abc must be present<br>
+</label><br><br>
+<button id="login">Login</button>
+</div>
+<div id="data"></div>
+<script>
+
+function checkLength(data){
+	return data.length>=8?true:false;
+}
+function checkConditions(password,conf){
+	if(password==conf){
+		try{
+			var msg=document.getElementById("msg");
+			msg.innerHTML="";
+			var cap=/[A-Z]/;
+			var small=/[a-z]/
+			var special=/[$@*]/
+			var abc=/abc/
+			let result=true;
+			if(!cap.test(password)){
+				msg.innerHTML=msg.innerHTML+"Atleast one uppercase letter required";
+				result=false;
+			}
+			if(!small.test(password)){
+				msg.innerHTML=msg.innerHTML+"<br>Atleast one lowercase letter required";
+				result=false;
+			}
+			if(!special.test(password)){
+				msg.innerHTML=msg.innerHTML+"<br>Atleast one of $@* is required";
+				result=false;
+			}
+			if(!abc.test(password)){
+				msg.innerHTML=msg.innerHTML+"<br>Word abc must be present";
+				result=false;
+			}
+			if(result){
+				msg.innerHTML="Password accepted";
+				document.getElementById("data").innerHTML=document.getElementById("username").value+"<br>"+password+"<br>"+conf;
+			}
+		}
+		catch(e){
+			alert(e)
+		}
+	}
+	else{
+		alert("Password!=ConfirmPassword")
+	}
+}
+document.getElementById("login").onclick=function(){
+	let username=document.getElementById("username").value;
+	let password=document.getElementById("password").value;
+	let conf=document.getElementById("conf").value;
+	checkLength(username)&&checkLength(password)&&checkLength(conf)?checkConditions(password,conf):function(){
+		alert("Username, passwords are not of specified length")
+	}();
+}
+
+</script>
+
+</body>
+</html>

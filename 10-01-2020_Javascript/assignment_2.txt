@@ -1,0 +1,6 @@
+The carriage return means "go back to the first column".
+
+The newline character means "go to the next line"
+
+Modern OS other than windows, see newline charcter as "\n"
+Windows OS see new line character as "\r\n"

@@ -1,0 +1,46 @@
+<html>
+<head>
+
+</head>
+<body>
+<div align="center">
+<input type="text" placeholder="Username" id="username" />
+<br><br>
+<label>Country:</label>
+<select>
+<option>India</option>
+<option>USA</option>
+<option>Australia</option>
+<option>Canada</option>
+</select>
+</div>
+
+<div align="center"  id="list">
+
+</div>
+
+<script>
+var names=["karthik123","i_am_karu","myInstaOfficial_One","qwerty123","DadsLittlePrincess","coolcharlie","my_art345"]
+var list=document.getElementById("list");
+names.sort();
+names.forEach((item)=>function(){
+	list.innerHTML=list.innerHTML+("<br>"+item)
+}())
+function testUsername(data){
+	let username=document.getElementById("username").value;
+	let reg=new RegExp(username);
+	return reg.test(data)?true:false;
+}
+username.onkeyup=function(){
+	list.innerHTML="";
+	let ans=names.filter(testUsername);
+	ans.sort()
+	ans.forEach((item)=>function(){
+		list.innerHTML=list.innerHTML+("<br>"+item)
+	}())
+}
+
+</script>
+
+</body>
+</html>
